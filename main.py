@@ -291,5 +291,20 @@ def problem506(score: List[int]):
     return result
 
 
+def problem1647(s):
+    frequency_list = []
+    counter = 0
+    for char in set(s):
+        char_frequency = s.count(char)
+        while char_frequency in frequency_list:
+            char_frequency -= 1
+            counter += 1
+        else:
+            frequency_list.append(char_frequency)
+        if 0 in frequency_list:
+            frequency_list.remove(0)
+    return counter
+
+
 if __name__ == '__main__':
-    print(problem506([10,3, 4, 1]))
+    print(problem1647('ceabaacbdd'))
