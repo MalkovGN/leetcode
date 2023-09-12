@@ -306,5 +306,24 @@ def problem1647(s):
     return counter
 
 
+def problem1800(nums):
+    max_sum = current_sum = 0
+    if len(nums) == 1:
+        return nums[0]
+    for idx in range(0, len(nums) - 1):
+        if current_sum == 0:
+            current_sum = nums[idx]
+        if nums[idx + 1] > nums[idx]:
+            current_sum += nums[idx + 1]
+        else:
+            if current_sum > max_sum:
+                max_sum = current_sum
+            current_sum = 0
+    if max_sum == 0 or current_sum > max_sum:
+        return current_sum
+    else:
+        return max_sum
+
+
 if __name__ == '__main__':
-    print(problem1647('ceabaacbdd'))
+    print(problem1800([6]))
