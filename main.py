@@ -1,5 +1,6 @@
 from functools import reduce
 from typing import List
+from itertools import permutations
 
 
 def merge_string(word1, word2):
@@ -325,5 +326,15 @@ def problem1800(nums):
         return max_sum
 
 
+def problem495(time, duration):
+    poison_seconds = 0
+    for i in range(len(time) - 1):
+        if time[i + 1] - time[i] > duration:
+            poison_seconds += duration
+        else:
+            poison_seconds += time[i + 1] - time[i]
+    return poison_seconds + duration
+
+
 if __name__ == '__main__':
-    print(problem1800([6]))
+    print(problem495([1, 3], 2))
