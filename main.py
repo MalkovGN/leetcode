@@ -1,6 +1,7 @@
 from functools import reduce
 from typing import List
-from itertools import permutations
+from itertools import chain
+from collections import defaultdict
 
 
 def merge_string(word1, word2):
@@ -336,5 +337,63 @@ def problem495(time, duration):
     return poison_seconds + duration
 
 
+def problem342(n):
+    if n == 1:
+        return True
+    else:
+        return n / 4 == 1 if n <= 4 else problem342(n / 4)
+
+
+def problem119(row_index):
+    if row_index == 0:
+        return [1]
+    output_row = [1, 1]
+
+    for i in range(2, row_index + 1):
+        curr_row = [output_row[0]]
+
+        for j in range(1, len(output_row)):
+            curr_row.append(output_row[j] + output_row[j - 1])
+
+        curr_row.append(output_row[-1])
+        output_row = curr_row
+
+    return output_row
+
+
+def problem779(n, k):
+
+    flag = True
+    all_row_len = 2 ** (n - 1)
+
+    while all_row_len != 1:
+
+        all_row_len //= 2
+        if k > all_row_len:
+            k -= all_row_len
+            flag = not flag
+
+    return 0 if flag else 1
+
+
+def problem2785(s):
+    vowels = 'AEIOUaeiou'
+    output = ''
+    vowels_in_str = sorted(list(filter(lambda letter: letter in vowels, s)))
+    if not vowels_in_str:
+        return s
+    idx, counter = 0, 0
+    while idx < len(s) and counter <= len(vowels_in_str):
+        if s[idx] in vowels:
+            output += vowels_in_str[counter]
+            counter += 1
+        else:
+            output += s[idx]
+        idx += 1
+    return output
+
+
 if __name__ == '__main__':
-    print(problem495([1, 3], 2))
+    print(problem2785('LQRamBOHfq'))
+    # print(problem1743([[2,1],[3,4],[3,2]]))
+
