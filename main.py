@@ -1,6 +1,7 @@
+import string
 from functools import reduce
 from typing import List
-from itertools import chain
+from itertools import chain, combinations
 from collections import defaultdict
 
 
@@ -393,7 +394,18 @@ def problem2785(s):
     return output
 
 
+def problem1930(s):
+    counter = 0
+    letters = string.ascii_lowercase
+
+    for letter in letters:
+        first_index = s.find(letter)
+        last_index = s.rfind(letter)
+        if first_index != -1:
+            counter += len(set(s[first_index + 1:last_index]))
+    return counter
+
 if __name__ == '__main__':
-    print(problem2785('LQRamBOHfq'))
+    print(problem1930('aabca'))
     # print(problem1743([[2,1],[3,4],[3,2]]))
 
