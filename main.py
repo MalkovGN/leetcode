@@ -417,9 +417,21 @@ def problem1846(arr):
         return len(arr)
 
 
+def problem1980(nums):
+    binary_str = ['0'] * len(nums)
+    idx = len(nums) - 1
 
+    while ''.join(binary_str) in nums:
+        if binary_str[idx] == '0':
+            binary_str[idx] = '1'
+        else:
+            binary_str[idx] = '0'
+        if idx == 0:
+            idx += 10
+        else:
+            idx -= 1
 
+    return ''.join(binary_str)
 
 if __name__ == '__main__':
-    pass
-
+    print(problem1980(["111","011","001"]))
