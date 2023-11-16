@@ -405,7 +405,21 @@ def problem1930(s):
             counter += len(set(s[first_index + 1:last_index]))
     return counter
 
+
+def problem1846(arr):
+    if len(arr) == 1:
+        return 1
+    if 1 in arr and max(arr) <= len(arr) and sorted(arr)[-1] - sorted(arr)[-2] <= 1:
+        return max(arr)
+    elif 1 in arr and max(arr) <= len(arr) and sorted(arr)[-1] - sorted(arr)[-2] > 1:
+        return sorted(arr)[-2] + 1
+    elif max(arr) > len(arr):
+        return len(arr)
+
+
+
+
+
 if __name__ == '__main__':
-    print(problem1930('aabca'))
-    # print(problem1743([[2,1],[3,4],[3,2]]))
+    pass
 
