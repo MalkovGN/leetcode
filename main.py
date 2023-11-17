@@ -433,5 +433,21 @@ def problem1980(nums):
 
     return ''.join(binary_str)
 
+
+def problem1877(nums):
+    first_idx = 0
+    last_idx = len(nums) - 1
+    sorted_nums = sorted(nums)
+    max_pair_sum = sorted_nums[first_idx] + sorted_nums[last_idx]
+
+    while last_idx - first_idx >= 1:
+        if sorted_nums[first_idx] + sorted_nums[last_idx] > max_pair_sum:
+            max_pair_sum = sorted_nums[first_idx] + sorted_nums[last_idx]
+        first_idx += 1
+        last_idx -= 1
+
+    return max_pair_sum
+
+
 if __name__ == '__main__':
-    print(problem1980(["111","011","001"]))
+    print(problem1877([4,1,5,1,2,5,1,5,5,4]))
