@@ -449,5 +449,17 @@ def problem1877(nums):
     return max_pair_sum
 
 
+def problem1838(nums, k):
+    counter = 0
+    sorted_nums = sorted(nums)
+    for idx in range(len(sorted_nums)):
+        k += sorted_nums[idx]
+        if sorted_nums[idx] * (idx - counter + 1) > k:
+            k -= sorted_nums[counter]
+            counter += 1
+
+    return len(sorted_nums) - counter
+
+
 if __name__ == '__main__':
-    print(problem1877([4,1,5,1,2,5,1,5,5,4]))
+    print(problem1838([1, 4, 8, 13], 5))
