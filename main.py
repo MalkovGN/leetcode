@@ -461,5 +461,31 @@ def problem1838(nums, k):
     return len(sorted_nums) - counter
 
 
+def problem2391(garbage, travel):
+    truck_idx = {
+        'P': 0,
+        'G': 0,
+        'M': 0,
+    }
+    p_minutes = garbage[0].count('P')
+    g_minutes = garbage[0].count('G')
+    m_minutes = garbage[0].count('M')
+    for idx in range(1, len(garbage)):
+        if 'P' in garbage[idx]:
+            p_minutes += sum(travel[truck_idx['P']:idx])
+            p_minutes += garbage[idx].count('P')
+            truck_idx['P'] = idx
+        if 'M' in garbage[idx]:
+            m_minutes += sum(travel[truck_idx['M']:idx])
+            m_minutes += garbage[idx].count('M')
+            truck_idx['M'] = idx
+        if 'G' in garbage[idx]:
+            g_minutes += sum(travel[truck_idx['G']:idx])
+            g_minutes += garbage[idx].count('G')
+            truck_idx['G'] = idx
+
+    return p_minutes + m_minutes + g_minutes
+
+
 if __name__ == '__main__':
-    print(problem1838([1, 4, 8, 13], 5))
+    print(problem2391(["G","P","GP","GG"], [2, 4, 3]))
