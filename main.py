@@ -1,7 +1,7 @@
 import string
 from functools import reduce
 from typing import List
-from collections import Counter
+from collections import Counter, defaultdict
 
 
 def merge_string(word1, word2):
@@ -501,6 +501,22 @@ def problem1814(nums):
     return counter % (10 ** 9 + 7)
 
 
+def problem1424(nums):
+    elements_dict = {}
+    output = []
+
+    for idx, elem in enumerate(nums):
+        for e_idx, e_elem in enumerate(elem):
+            if idx + e_idx not in elements_dict.keys():
+                elements_dict[idx + e_idx] = [e_elem]
+            else:
+                elements_dict[idx + e_idx].append(e_elem)
+
+    for elem in elements_dict.values():
+        output += elem[::-1]
+
+    return output
+
 
 if __name__ == '__main__':
-    print(problem1814([1, 2, 3]))
+    print(problem1424([[1,2,3,4,5],[6,7],[8],[9,10,11],[12,13,14,15,16]]))
