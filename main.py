@@ -1,8 +1,7 @@
 import string
 from functools import reduce
 from typing import List
-from itertools import chain, combinations
-from collections import defaultdict
+from collections import Counter
 
 
 def merge_string(word1, word2):
@@ -487,5 +486,21 @@ def problem2391(garbage, travel):
     return p_minutes + m_minutes + g_minutes
 
 
+def reverse_int(number):
+    return int(str(number)[::-1])
+
+
+def problem1814(nums):
+    counter = 0
+    for idx in range(len(nums)):
+        nums[idx] = nums[idx] - reverse_int(nums[idx])
+
+    c = Counter(nums)
+    for value in c.values():
+        counter += (value * (value - 1)) // 2
+    return counter % (10 ** 9 + 7)
+
+
+
 if __name__ == '__main__':
-    print(problem2391(["G","P","GP","GG"], [2, 4, 3]))
+    print(problem1814([1, 2, 3]))
