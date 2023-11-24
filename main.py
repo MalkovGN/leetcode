@@ -536,5 +536,11 @@ def problem1630(nums, l, r):
     return result
 
 
+def problem1561(piles):
+    return sum(sorted(piles)[len(piles) // 3::2])
+
+
 if __name__ == '__main__':
-    print(problem1630([4,6,5,9,3,7], [0, 0, 2], [2, 3, 5]))
+    print(problem1561([9,8,7,6,5,1,2,3,4]))
+    print(problem1561([2,4,5]))
+    print(problem1561([2, 4, 1, 2, 7, 8]))
