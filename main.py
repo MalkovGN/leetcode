@@ -518,5 +518,23 @@ def problem1424(nums):
     return output
 
 
+def problem1630(nums, l, r):
+    result = []
+    for idx in range(len(l)):
+        sub_nums = nums[l[idx]:r[idx] + 1]
+        sub_nums.sort()
+        d = sub_nums[1] - sub_nums[0]
+        for i in range(len(sub_nums) - 1):
+            if sub_nums[i] + d == sub_nums[i + 1] and i == len(sub_nums) - 2:
+                result.append(True)
+            elif sub_nums[i] + d == sub_nums[i + 1]:
+                continue
+            else:
+                result.append(False)
+                break
+
+    return result
+
+
 if __name__ == '__main__':
-    print(problem1424([[1,2,3,4,5],[6,7],[8],[9,10,11],[12,13,14,15,16]]))
+    print(problem1630([4,6,5,9,3,7], [0, 0, 2], [2, 3, 5]))
