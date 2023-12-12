@@ -540,6 +540,10 @@ def problem1561(piles):
     return sum(sorted(piles)[len(piles) // 3::2])
 
 
+def problem1464(nums: List[int]) -> int:
+    return (sorted(nums, reverse=True)[0] - 1) * (sorted(nums, reverse=True)[1] - 1)
+
+
 if __name__ == '__main__':
     print(problem1561([9,8,7,6,5,1,2,3,4]))
     print(problem1561([2,4,5]))
