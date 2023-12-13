@@ -565,6 +565,16 @@ def problem1716(n: int) -> int:
         return 28 * weeks + 7 * weeks + sum([elem for elem in range(weeks + 1, weeks + 1 + (n - n // 7 * 7))])
 
 
+def problem1582(mat: List[List[int]]) -> int:
+    count_special_idx = 0
+    for row in mat:
+        if sum(row) == 1:
+            ones_idx = row.index(1)
+            if sum([column[ones_idx] for column in mat]) == 1:
+                count_special_idx += 1
+    return count_special_idx
+
+
 if __name__ == '__main__':
-    print(problem1716(20))
+    print(problem1582([[1,0,0],[0,1,0],[0,0,1]]))
 
