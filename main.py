@@ -575,6 +575,40 @@ def problem1582(mat: List[List[int]]) -> int:
     return count_special_idx
 
 
+def problem169(nums: List[int]) -> int:
+    return [elem for elem in set(nums) if nums.count(elem) > len(nums) // 2][0]
+
+
+def problem1913(nums: List[int]) -> int:
+    nums.sort()
+    return nums[-1] * nums[-2] - nums[0] * nums[1]
+
+
+def problem135(ratings: List[int]) -> int:
+    candies = [1] * len(ratings)
+
+    for idx in range(1, len(ratings)):
+        if ratings[idx] > ratings[idx - 1]:
+            candies[idx] = candies[idx - 1] + 1
+        elif ratings[idx] == ratings[idx - 1]:
+            candies[idx] = candies[idx - 1]
+
+    for idx in range(len(ratings) - 2, -1, -1):
+        if ratings[idx] > ratings[idx + 1]:
+            candies[idx] = max(candies[idx], candies[idx + 1] + 1)
+    return sum(candies)
+
+
+def problem121(prices: List[int]) -> int:
+    profit = 0
+    buy = prices[0]
+    for cost in prices[1:]:
+        if cost > buy:
+            profit = max(profit, cost - buy)
+        else:
+            buy = cost
+    return profit
+
 if __name__ == '__main__':
-    print(problem1582([[1,0,0],[0,1,0],[0,0,1]]))
+    print(problem121([2, 4, 1]))
 
