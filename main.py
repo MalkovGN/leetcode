@@ -615,6 +615,16 @@ def problem2706(prices: List[int], money: int) -> int:
     return money - prices[0] - prices[1] if money >= prices[0] + prices[1] else money
 
 
+def problem383(ransom_note: str, magazine: str) -> bool:
+    for letter in ransom_note:
+        if letter in magazine:
+            idx = magazine.index(letter)
+            magazine = magazine[:idx] + magazine[idx + 1:]
+        else:
+            return False
+    return True
+
+
 if __name__ == '__main__':
-    print(problem2706([3, 2, 3], 3))
+    print(problem383('aa', 'abab'))
 
