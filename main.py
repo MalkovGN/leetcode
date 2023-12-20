@@ -609,6 +609,12 @@ def problem121(prices: List[int]) -> int:
             buy = cost
     return profit
 
+
+def problem2706(prices: List[int], money: int) -> int:
+    prices.sort()
+    return money - prices[0] - prices[1] if money >= prices[0] + prices[1] else money
+
+
 if __name__ == '__main__':
-    print(problem121([2, 4, 1]))
+    print(problem2706([3, 2, 3], 3))
 
