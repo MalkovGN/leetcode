@@ -625,6 +625,11 @@ def problem383(ransom_note: str, magazine: str) -> bool:
     return True
 
 
+def problem1637(points: List[List[int]]) -> int:
+    points = sorted(points, key=lambda x: x[0])
+    return max([points[idx + 1][0] - points[idx][0] for idx in range(len(points) - 1)])
+
+
 if __name__ == '__main__':
-    print(problem383('aa', 'abab'))
+    print(problem1637([[3,1],[9,0],[1,0],[1,4],[5,3],[8,8]]))
 
