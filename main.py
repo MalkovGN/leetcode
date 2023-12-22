@@ -630,6 +630,13 @@ def problem1637(points: List[List[int]]) -> int:
     return max([points[idx + 1][0] - points[idx][0] for idx in range(len(points) - 1)])
 
 
-if __name__ == '__main__':
-    print(problem1637([[3,1],[9,0],[1,0],[1,4],[5,3],[8,8]]))
+def problem1422(s: str) -> int:
+    len_s = len(s)
+    max_score = 0
+    for idx in range(1, len_s):
+        max_score = max(max_score, s[0:idx].count('0') + s[idx:len_s].count('1'))
+    return max_score
 
+
+if __name__ == '__main__':
+    print(problem1422("011101"))
