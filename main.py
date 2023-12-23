@@ -631,12 +631,21 @@ def problem1637(points: List[List[int]]) -> int:
 
 
 def problem1422(s: str) -> int:
-    len_s = len(s)
-    max_score = 0
+    len_s: int = len(s)
+    max_score: int = 0
     for idx in range(1, len_s):
         max_score = max(max_score, s[0:idx].count('0') + s[idx:len_s].count('1'))
     return max_score
 
 
+def problem55(nums: List[int]) -> bool:
+    next_idx = 0
+    for i in range(len(nums)):
+        if i > next_idx:
+            return False
+        next_idx = max(next_idx, i + nums[i])
+    return True
+
+
 if __name__ == '__main__':
-    print(problem1422("011101"))
+    print(problem55([2, 5, 0, 0]))
