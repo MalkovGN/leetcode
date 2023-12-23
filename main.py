@@ -1,6 +1,6 @@
 import string
 from functools import reduce
-from typing import List, Optional
+from typing import List, Optional, Tuple
 from collections import Counter, defaultdict
 
 
@@ -647,5 +647,25 @@ def problem55(nums: List[int]) -> bool:
     return True
 
 
+def problem1496(path: str) -> bool:
+    points: List[tuple[int, int]] = [(0, 0)]
+    for letter in path:
+        if letter == 'N':
+            point: tuple[int, int] = (points[-1][0], points[-1][1] + 1)
+        elif letter == 'S':
+            point: tuple[int, int] = (points[-1][0], points[-1][1] - 1)
+        elif letter == 'E':
+            point: tuple[int, int] = (points[-1][0] + 1, points[-1][1])
+        elif letter == 'W':
+            point: tuple[int, int] = (points[-1][0] - 1, points[-1][1])
+
+        if point in points:
+            return True
+        else:
+            points.append(point)
+
+    return False
+
+
 if __name__ == '__main__':
-    print(problem55([2, 5, 0, 0]))
+    print(problem1496('NES'))
