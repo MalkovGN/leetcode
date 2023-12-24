@@ -667,5 +667,19 @@ def problem1496(path: str) -> bool:
     return False
 
 
+def problem1758(s: str) -> int:
+    count_0, count_1 = 0, 0
+
+    for idx in range(len(s)):
+        if idx % 2 == 0:
+            count_0 += s[idx] != '0'
+            count_1 += s[idx] != '1'
+        else:
+            count_0 += s[idx] != '1'
+            count_1 += s[idx] != '0'
+
+    return min(count_0, count_1)
+
+
 if __name__ == '__main__':
-    print(problem1496('NES'))
+    print(problem1758('1111'))
