@@ -681,5 +681,22 @@ def problem1758(s: str) -> int:
     return min(count_0, count_1)
 
 
+def problem1578(colors: str, needed_time: List[int]) -> int:
+
+    time_counter = 0
+    curr_color_idx = []
+    for idx in range(len(colors) - 1):
+        if colors[idx] == colors[idx + 1]:
+            curr_color_idx.append(idx)
+            curr_color_idx.append(idx + 1)
+        else:
+            times = [needed_time[i] for i in set(curr_color_idx)] if curr_color_idx else [0]
+            time_counter += sum(times) - max(times)
+            curr_color_idx.clear()
+    times = [needed_time[i] for i in set(curr_color_idx)] if curr_color_idx else [0]
+    time_counter += sum(times) - max(times)
+    return time_counter
+
+
 if __name__ == '__main__':
-    print(problem1758('1111'))
+    print(problem1578('bbbaaa', [4, 9, 3, 8, 8, 9]))
