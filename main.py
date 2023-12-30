@@ -698,5 +698,9 @@ def problem1578(colors: str, needed_time: List[int]) -> int:
     return time_counter
 
 
+def problem1897(words: List[str]) -> bool:
+    return all([''.join(words).count(letter) % len(words) == 0 for letter in set(''.join(words))])
+
+
 if __name__ == '__main__':
-    print(problem1578('bbbaaa', [4, 9, 3, 8, 8, 9]))
+    print(problem1897(["abbab"]))
