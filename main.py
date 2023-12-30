@@ -702,5 +702,16 @@ def problem1897(words: List[str]) -> bool:
     return all([''.join(words).count(letter) % len(words) == 0 for letter in set(''.join(words))])
 
 
+def problem1897_v2(words: List[str]) -> bool:
+    len_words = len(words)
+    all_letters = ''.join(words)
+
+    for letter in set(all_letters):
+        if all_letters.count(letter) % len_words != 0:
+            return False
+    return True
+
+
 if __name__ == '__main__':
     print(problem1897(["abbab"]))
+    print(all([True, False, True]))
