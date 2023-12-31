@@ -266,7 +266,7 @@ def problem118(num_rows):
             break
         row = [1]
         for i in range(1, len(output[idx])):
-            row.append(output[idx][i-1] + output[idx][i])
+            row.append(output[idx][i - 1] + output[idx][i])
         row.append(1)
         output.append(row)
         idx += 1
@@ -275,7 +275,6 @@ def problem118(num_rows):
 
 
 def problem506(score: List[int]):
-
     result = []
     best_scores = {
         1: 'Gold Medal',
@@ -362,7 +361,6 @@ def problem119(row_index):
 
 
 def problem779(n, k):
-
     flag = True
     all_row_len = 2 ** (n - 1)
 
@@ -682,7 +680,6 @@ def problem1758(s: str) -> int:
 
 
 def problem1578(colors: str, needed_time: List[int]) -> int:
-
     time_counter = 0
     curr_color_idx = []
     for idx in range(len(colors) - 1):
@@ -712,6 +709,16 @@ def problem1897_v2(words: List[str]) -> bool:
     return True
 
 
+def problem1624(s: str) -> int:
+    letters_idx = {}
+    max_len = -1
+    for idx, letter in enumerate(s):
+        if letter not in letters_idx.keys():
+            letters_idx[letter] = idx
+        else:
+            max_len = max(max_len, idx - letters_idx[letter] - 1)
+    return max_len
+
+
 if __name__ == '__main__':
-    print(problem1897(["abbab"]))
-    print(all([True, False, True]))
+    print(problem1624("mgntdygtxrvxjnwksqhxuxtrv"))
