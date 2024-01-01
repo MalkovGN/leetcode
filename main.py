@@ -720,5 +720,19 @@ def problem1624(s: str) -> int:
     return max_len
 
 
+def problem455(g: List[int], s: List[int]) -> int:
+    g.sort()
+    s.sort()
+
+    idx = 0
+    for cookie in s:
+        if idx == len(g):
+            break
+        if cookie >= g[idx]:
+            idx += 1
+
+    return idx
+
+
 if __name__ == '__main__':
-    print(problem1624("mgntdygtxrvxjnwksqhxuxtrv"))
+    print(problem455([1, 2], [1, 2, 3]))
