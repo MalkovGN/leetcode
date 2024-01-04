@@ -734,5 +734,17 @@ def problem455(g: List[int], s: List[int]) -> int:
     return idx
 
 
+def problem2870(nums: List[int]) -> int:
+    operations_number: int = 0
+    nums_dict: dict = Counter(nums)
+    for elem in nums_dict.values():
+        if elem == 1:
+            return -1
+        operations_number += elem // 3
+        if elem % 3 != 0:
+            operations_number += 1
+    return operations_number
+
+
 if __name__ == '__main__':
-    print(problem455([1, 2], [1, 2, 3]))
+    print(problem2870([2, 3, 3, 2, 2, 4, 2, 3, 4]))
