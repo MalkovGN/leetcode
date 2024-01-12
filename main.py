@@ -1,3 +1,4 @@
+import re
 import string
 from functools import reduce
 from typing import List, Optional, Tuple
@@ -746,5 +747,9 @@ def problem2870(nums: List[int]) -> int:
     return operations_number
 
 
+def problem1704(s: str) -> bool:
+    return len(re.findall("a|e|i|o|u|A|E|I|O|U", s[0:len(s) // 2])) == len(re.findall("a|e|i|o|u|A|E|I|O|U", s[len(s) // 2: len(s)]))
+
+
 if __name__ == '__main__':
-    print(problem2870([2, 3, 3, 2, 2, 4, 2, 3, 4]))
+    print(problem1704('ebeilA'))
