@@ -751,5 +751,28 @@ def problem1704(s: str) -> bool:
     return len(re.findall("a|e|i|o|u|A|E|I|O|U", s[0:len(s) // 2])) == len(re.findall("a|e|i|o|u|A|E|I|O|U", s[len(s) // 2: len(s)]))
 
 
+def problem2225(matches: list[list[int]]) -> list[list[int]]:
+    no_losing: set = set()
+    one_lose: set = set()
+    more_losing: set = set()
+    for match in matches:
+        if match[0] not in one_lose and match[0] not in more_losing:
+            no_losing.add(match[0])
+        if match[1] in no_losing:
+            no_losing.remove(match[1])
+            one_lose.add(match[1])
+        elif match[1] in one_lose:
+            one_lose.remove(match[1])
+            more_losing.add(match[1])
+        elif match[1] in more_losing:
+            continue
+        else:
+            one_lose.add(match[1])
+    return [
+        sorted(no_losing),
+        sorted(one_lose)
+    ]
+
+
 if __name__ == '__main__':
-    print(problem1704('ebeilA'))
+    print(problem2225([[1,3],[2,3],[3,6],[5,6],[5,7],[4,5],[4,8],[4,9],[10,4],[10,9]]))
