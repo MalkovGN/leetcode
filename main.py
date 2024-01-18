@@ -774,5 +774,13 @@ def problem2225(matches: list[list[int]]) -> list[list[int]]:
     ]
 
 
+def problem70(n: int) -> int:
+    prev, curr = 1, 2
+    for _ in range(2, n):
+        prev, curr = curr, prev + curr
+
+    return 1 if n == 1 else curr
+
+
 if __name__ == '__main__':
-    print(problem2225([[1,3],[2,3],[3,6],[5,6],[5,7],[4,5],[4,8],[4,9],[10,4],[10,9]]))
+    print(problem70(2))
