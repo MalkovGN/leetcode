@@ -793,5 +793,10 @@ def problem1143(text1: str, text2: str) -> int:
     return dp[len(text1)][len(text2)]
 
 
+def problem451(s: str) -> str:
+    letters_count = Counter(s)
+    return ''.join([value * key for key, value in dict(sorted(letters_count.items(), key=lambda item: item[1], reverse=True)).items()])
+
+
 if __name__ == '__main__':
-    print(problem1143('abcde', 'ace'))
+    print(problem451('Aabb'))
